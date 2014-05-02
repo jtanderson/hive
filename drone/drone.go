@@ -1,5 +1,7 @@
 package drone
 
+import ()
+
 type HiveDrone interface {
 	Status() string
 	StartService() bool
@@ -20,4 +22,10 @@ func (d *Drone) StartService() bool {
 
 func (d *Drone) StopService() bool {
 	return true
+}
+
+func (d *Drone) MyCall(a int, b *int) error {
+	/*	err := errors.New("test")*/
+	/*	return err*/
+	return nil
 }
