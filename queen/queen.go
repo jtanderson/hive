@@ -26,8 +26,20 @@ func (d Drone) String() string {
 	return d.id
 }
 
+func (d *Drone) GetId() string {
+	return d.id
+}
+
+func (d *Drone) GetClient() *rpc.Client {
+	return d.client
+}
+
 func (queen *Queen) Run() {
 	fmt.Println("Starting Queen...")
+}
+
+func (queen *Queen) GetDrone(i int) Drone {
+	return queen.drones[i]
 }
 
 func (queen *Queen) CountDrones() int {

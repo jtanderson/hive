@@ -18,6 +18,10 @@ type Drone struct {
 	Id int
 }
 
+type Args struct {
+	A, B int
+}
+
 func (d *Drone) Status() bool {
 	return true
 }
@@ -38,8 +42,9 @@ func (d *Drone) StopService() bool {
 	return true
 }
 
-func (d *Drone) MyCall(a int, b *int) error {
+func (d *Drone) MyCall(args *Args, reply *int) error {
 	/*	err := errors.New("test")*/
 	/*	return err*/
+	log.Println("Calling MyCall with Args:", args)
 	return nil
 }
