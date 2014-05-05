@@ -14,8 +14,14 @@ type HiveDrone interface {
 	StopService() bool
 }
 
+type Queen struct {
+	address     string
+	certificate string
+}
+
 type Drone struct {
-	Id int
+	Id    int
+	queen Queen
 }
 
 type Args struct {
