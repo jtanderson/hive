@@ -70,7 +70,3 @@ func (queen *Queen) EnlistDrone(address string) error {
 	queen.drones = append(queen.drones, d)
 	return nil
 }
-
-func (queen *Queen) ShowEnlisted() string {
-	return fmt.Sprint(queen.drones)
-}

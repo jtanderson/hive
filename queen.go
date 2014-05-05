@@ -21,6 +21,4 @@ func main() {
 		log.Fatal("dialing:", err)
 	}
 	fmt.Println("Called MyCall to get:", reply)
-
-	fmt.Println(q.ShowEnlisted())
 }

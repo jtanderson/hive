@@ -49,8 +49,6 @@ func (d *Drone) StopService() bool {
 }
 
 func (d *Drone) MyCall(args *Args, reply *int) error {
-	/*	err := errors.New("test")*/
-	/*	return err*/
 	log.Println("Calling MyCall with Args:", args)
 	return nil
 }
