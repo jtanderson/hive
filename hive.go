@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/jtanderson/drone"
-	"github.com/jtanderson/queen"
+	"github.com/jtanderson/hive/drone"
+	"github.com/jtanderson/hive/queen"
 	"github.com/olekukonko/tablewriter"
 	"log"
 	"os"
