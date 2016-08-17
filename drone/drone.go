@@ -20,7 +20,7 @@ type Queen struct {
 }
 
 type Drone struct {
-	Id    int
+	id    string
 	queen Queen
 }
 
@@ -28,11 +28,11 @@ type Args struct {
 	A, B int
 }
 
-func (d *Drone) Status() bool {
-	return true
+func (d *Drone) Status(args *Args, reply *string) error {
+	return nil
 }
 
-func (d *Drone) StartService() (net.Listener, error) {
+func StartService(d *Drone) (net.Listener, error) {
 	rpc.Register(d)
 	rpc.HandleHTTP()
 	listener, e := net.Listen("tcp", ":1234")
@@ -44,11 +44,12 @@ func (d *Drone) StartService() (net.Listener, error) {
 	return listener, e
 }
 
-func (d *Drone) StopService() bool {
+func StopService(d *Drone) bool {
 	return true
 }
 
-func (d *Drone) MyCall(args *Args, reply *int) error {
+func (d *Drone) MyCall(args *Args, reply *string) error {
 	log.Println("Calling MyCall with Args:", args)
+	*reply = "Success!"
 	return nil
 }

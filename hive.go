@@ -35,24 +35,24 @@ func main() {
 func runDrone() {
 	d := new(drone.Drone)
 
-	d.StartService()
+	drone.StartService(d)
 
 	ch := make(chan os.Signal)
 	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM)
 	log.Println(<-ch)
 	log.Println("Stopping drone...")
 
-	d.StopService()
+	drone.StopService(d)
 }
 
 func runQueen() {
-	q := queen.Queen{}
+	q := new(queen.Queen)
 
 	/* Delete this madness eventually */
 	q.EnlistDrone("127.0.0.1:1234")
 	d := q.GetDrone(0)
 	args := &drone.Args{7, 8}
-	var reply int
+	var reply string
 	err := d.GetClient().Call("Drone.MyCall", args, &reply)
 	if err != nil {
 		log.Fatal("dialing:", err)
@@ -60,7 +60,7 @@ func runQueen() {
 	fmt.Println("Called MyCall to get:", reply)
 	/* ------------------- */
 
-	showEnlisted(&q)
+	showEnlisted(q)
 }
 
 func showEnlisted(q *queen.Queen) {
